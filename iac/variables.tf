@@ -66,3 +66,12 @@ variable "grafana_external_port" {
   type        = number
   default     = 3000
 }
+variable "firewall_image" {
+  description = "Imagen del contenedor firewall"
+  type        = string
+}
+
+variable "firewall_tag" {
+  description = "Versión de la imagen del contenedor firewall"
+  type        = string
+}

@@ -28,6 +28,6 @@ resource "docker_container" "postgres" {
   ]
 
   networks_advanced {
-    name = docker_network.monitor_net.name
+    name = docker_network.private_net.name
   }
 }

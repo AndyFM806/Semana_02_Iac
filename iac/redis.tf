@@ -14,7 +14,7 @@ resource "docker_container" "redis" {
     external = 3307
   }
   networks_advanced {
-    name = docker_network.persistence_net.name
+    name = docker_network.private_net.name
   }
 }
 

@@ -17,3 +17,6 @@ postgres_db            = "app_db"
 
 
 grafana_external_port = 3000
+
+firewall_image = "nicolaka/netshoot"
+firewall_tag   = "latest"

@@ -15,7 +15,10 @@ volumes {
   container_path = "/usr/share/nginx/html"
 }
   networks_advanced {
-    name = docker_network.app_net.name
+    name = docker_network.public_net.name
+  }
+  networks_advanced {
+    name = docker_network.private_net.name
   }
 }
 
@@ -31,7 +34,10 @@ volumes {
   container_path = "/usr/share/nginx/html"
 }
   networks_advanced {
-    name = docker_network.app_net.name
+    name = docker_network.public_net.name
+  }
+  networks_advanced {
+    name = docker_network.private_net.name
   }
 }
 
@@ -47,6 +53,9 @@ volumes {
   container_path = "/usr/share/nginx/html"
 }
   networks_advanced {
-    name = docker_network.app_net.name
+    name = docker_network.public_net.name
+  }
+  networks_advanced {
+    name = docker_network.private_net.name
   }
 }

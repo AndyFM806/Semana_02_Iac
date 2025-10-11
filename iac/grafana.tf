@@ -14,4 +14,8 @@ resource "docker_container" "grafana" {
     "GF_SECURITY_ADMIN_USER=admin",
     "GF_SECURITY_ADMIN_PASSWORD=admin"
   ]
+  networks_advanced {
+    name = docker_network.public_net.name
+
+  }
 }
