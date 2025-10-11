@@ -14,12 +14,10 @@ volumes {
   host_path      = abspath("${path.module}/files/web")
   container_path = "/usr/share/nginx/html"
 }
-  networks_advanced {
-    name = docker_network.public_net.name
-  }
-  networks_advanced {
-    name = docker_network.private_net.name
-  }
+networks_advanced {
+  name = docker_network.private_net.name
+}
+
 }
 
 resource "docker_container" "app2" {
@@ -33,12 +31,10 @@ volumes {
   host_path      = abspath("${path.module}/files/web")
   container_path = "/usr/share/nginx/html"
 }
-  networks_advanced {
-    name = docker_network.public_net.name
-  }
-  networks_advanced {
-    name = docker_network.private_net.name
-  }
+networks_advanced {
+  name = docker_network.private_net.name
+}
+
 }
 
 resource "docker_container" "app3" {
@@ -52,10 +48,8 @@ volumes {
   host_path      = abspath("${path.module}/files/web")
   container_path = "/usr/share/nginx/html"
 }
-  networks_advanced {
-    name = docker_network.public_net.name
-  }
-  networks_advanced {
-    name = docker_network.private_net.name
-  }
+networks_advanced {
+  name = docker_network.private_net.name
+}
+
 }
