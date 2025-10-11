@@ -1,68 +1,90 @@
-# 📘 Semana_02_IaC — Uso rápido (Imágenes, Puertos y Comandos Terraform)
+📘 2️⃣ README.md — Actualizado y profesional
 
-Infra local con **Terraform + Docker** (Nginx, Redis, PostgreSQL, Grafana).
+Crea o reemplaza el archivo README.md en la raíz con este contenido 👇
+
+# 🧩 Laboratorio Terraform + Docker
+
+Este proyecto implementa una infraestructura de múltiples contenedores Docker administrados mediante **Terraform**
+---
+
+## 📁 Estructura del proyecto
+
+
+
+Semana_02_IaC/
+├── iac/
+│ ├── main.tf
+│ ├── networks.tf
+│ ├── nginx.tf
+│ ├── postgre.tf
+│ ├── redis.tf
+│ ├── grafana.tf
+│ ├── variables.tf
+│ ├── terraform.tfvars
+│ └── files/
+│ └── web/
+│ └── index.html
+├── config/
+│ ├── inventory.ini
+│ └── playbook.yml
+├── templates/
+│ └── nginx.conf
+└── scripts/
+└── init.sh
+
 
 ---
 
-## 🖼️ Imágenes usadas
+## 🚀 Despliegue automático
 
-- **Nginx:** `nginx:stable-alpine3.21-perl`
-- **Redis:** `redis:7.4.1-alpine`
-- **PostgreSQL:** `postgres:15-alpine`
-- **Grafana:** `grafana/grafana-enterprise:9.4.7`
+Ejecuta el siguiente comando desde la raíz del proyecto para inicializar y aplicar la infraestructura:
 
----
-
-## 🔌 Puertos
-
-### Nginx (3 contenedores)
-- **Interno:** `80`
-- **Externos:**  
-  - `app1` → `8080`  
-  - `app2` → `8081`  
-  - `app3` → `8082`
-
-### Redis
-- **Interno:** `6379`  
-- **Externo (según workspace):**
-  - `dev` → `6380`
-  - `qa`  → `6385`
-  - `prod`→ `6381`
-
-### PostgreSQL
-- **Interno:** `5432`
-- **Externo:** `5432`
-
-### Grafana
-- **Interno:** `3000`
-- **Externo:** `3000`
-
----
-
-## 🛠️ Comandos Terraform
-
-> Ubícate en la raíz del repo.
-
-### 1) Inicializar
 ```bash
+bash scripts/init.sh
+
+
+Si trabajas directamente en PowerShell (Windows), puedes ejecutar los comandos Terraform manualmente desde iac/:
+
 terraform init
-terraform workspace list
 terraform workspace new dev
 terraform workspace select dev
-docker ps
+terraform apply -auto-approve
 
-Accesos rápidos
+🌐 Contenedores desplegados
+Servicio	Imagen	Puerto externo	Puerto interno	Descripción
+NGINX App 1	nginx:latest	8080	80	Página estática index.html
+NGINX App 2	nginx:latest	8081	80	Página estática index.html
+NGINX App 3	nginx:latest	8082	80	Página estática index.html
+Redis	redis:8.2.2-alpine	6380	6379	Cache y cola de mensajes
+PostgreSQL	postgres:latest	5432	5432	Base de datos relacional
+Grafana	grafana/grafana:12.2.0	3000	3000	Monitoreo y dashboards
+⚙️ Archivos estáticos
 
-Nginx:
+El contenido HTML que sirve NGINX se encuentra en:
 
-http://localhost:8080
+iac/files/web/index.html
 
-http://localhost:8081
 
-http://localhost:8082
+Ejemplo de vista:
 
-Grafana: http://localhost:3000
+<h1>Bienvenido a App desplegada con Terraform + Docker</h1>
 
-PostgreSQL: localhost:5432 (variables en terraform.tfvars)
 
-Redis: puerto externo según workspace (ej. 6380 en dev)
+Cada contenedor NGINX monta esa carpeta dentro de /usr/share/nginx/html.
+
+🔧 Automatización post-provisioning (Ansible)
+
+Se incluye la carpeta config/ con la estructura base de Ansible para automatización post-provisioning.
+Dado que la infraestructura se ejecuta sobre Windows, Ansible no se ejecuta localmente, pero el código queda preparado para su uso en entornos Linux/WSL.
+
+🧹 Limpieza de recursos
+
+Para destruir toda la infraestructura:
+
+cd iac
+terraform destroy -auto-approve
+
+🧠 Créditos
+
+Proyecto desarrollado por Andy Fernandez Muguerza y Diego Jara Tirado
+Correcciones aplicadas por Andy Fernandez Muguerza
