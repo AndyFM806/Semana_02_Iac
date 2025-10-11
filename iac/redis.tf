@@ -1,5 +1,5 @@
 resource "docker_image" "redis" {
-  name = var.redis_image
+  name = "redis:8.2.2-alpine"
 }
 
 resource "docker_volume" "redis_data" {
@@ -8,12 +8,11 @@ resource "docker_volume" "redis_data" {
 
 resource "docker_container" "redis" {
   name  = "redis"
-  image = docker_image.redis.latest
+  image = docker_image.redis.image_id
   ports {
-    internal = 6379
-    external = var.redis_external_port
+    internal = 3306
+    external = 3307
   }
-  volumes = ["${docker_volume.redis_data.name}:/data"]
   networks_advanced {
     name = docker_network.persistence_net.name
   }

@@ -4,7 +4,8 @@ resource "docker_image" "nginx" {
 
 resource "docker_container" "app1" {
   name  = "app1"
-  image = docker_image.nginx.latest
+  image = docker_image.nginx.name
+
   ports {
     internal = 80
     external = 8080
@@ -16,7 +17,7 @@ resource "docker_container" "app1" {
 
 resource "docker_container" "app2" {
   name  = "app2"
-  image = docker_image.nginx.latest
+  image = docker_image.nginx.name
   ports {
     internal = 80
     external = 8081
@@ -28,7 +29,7 @@ resource "docker_container" "app2" {
 
 resource "docker_container" "app3" {
   name  = "app3"
-  image = docker_image.nginx.latest
+  image = docker_image.nginx.name
   ports {
     internal = 80
     external = 8082
