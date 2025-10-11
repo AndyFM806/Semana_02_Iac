@@ -7,6 +7,20 @@ terraform {
   }
 }
 
+#outputs para comprobar servicios
+output "app1_url" {
+  value = "http://localhost:8080"
+}
+output "app2_url" {
+  value = "http://localhost:8081"
+}
+output "app3_url" {
+  value = "http://localhost:8082"
+}
+output "grafana_url" {
+  value = "http://localhost:3000"
+}
+
 provider "docker" {
 }
 
