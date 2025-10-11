@@ -90,7 +90,9 @@ Proyecto desarrollado por Andy Fernandez Muguerza y Diego Jara Tirado
 Correcciones aplicadas por Andy Fernandez Muguerza
 
 REFORZAMIENTO: Firewall (nicolaka/netshoot)
+Para aplicar solo este componente:
+terraform apply -auto-approve -target='docker_container.firewall'
 - Actúa como **puente de red entre la red pública y privada** (`public_net` y `private_net`).
 - Permite ejecutar reglas `iptables` para filtrar tráfico entre zonas internas y externas.
-- Imagen utilizada: `nicolaka/netshoot` versión `v0.14`, cabe recalcar profesor q use la v0.14 pese a que en docker esta la latest, para q sevea q lo hice yo...
+- Imagen utilizada: `nicolaka/netshoot` versión `latest`, asi me sale en dockerhub, la anterior es la v0.14
 - Está conectado a ambas redes con capacidades `NET_ADMIN` activas.
