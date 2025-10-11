@@ -1,13 +1,64 @@
+
 # Terraform
+
 .terraform/
 *.tfstate
 *.tfstate.*
-.terraform.lock.hcl
 crash.log
 override.tf
 override.tf.json
-*_override.tf
-*_override.tf.json
+*.tfvars.json
+.terraform.lock.hcl
+terraform.tfvars.backup
 
-# Backup files
+
+# Docker
+
+*.pid
+*.log
+docker-compose.override.yml
+
+
+# Ansible
+
+*.retry
+*.log
+
+
+# Archivos temporales del sistema (Windows / macOS / Linux)
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+
+
+# Archivos de prueba o cache de Python (si usas scripts)
+__pycache__/
+*.pyc
+*.pyo
+
+
+# Archivos personales o de respaldo
+
 *.bak
+*.zip
+*.tar
+*.rar
+*.7z
+*.old
+*.orig
+
+# OneDrive y rutas de sincronización
+
+*.lnk
+~$*
+OneDriveTemp/
+*.tmp
