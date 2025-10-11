@@ -1,0 +1,16 @@
+---
+- name: Post-provisioning con Ansible (infra local)
+  hosts: local
+  become: true
+  tasks:
+
+    - name: Verificar conexión local
+      ping:
+
+    - name: Mostrar contenedores Docker activos
+      command: docker ps
+      register: docker_ps
+
+    - name: Mostrar salida del comando docker ps
+      debug:
+        var: docker_ps.stdout_lines
