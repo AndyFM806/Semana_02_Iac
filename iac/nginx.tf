@@ -10,6 +10,10 @@ resource "docker_container" "app1" {
     internal = 80
     external = 8080
   }
+volumes {
+  host_path      = abspath("${path.module}/files/web")
+  container_path = "/usr/share/nginx/html"
+}
   networks_advanced {
     name = docker_network.app_net.name
   }
@@ -22,6 +26,10 @@ resource "docker_container" "app2" {
     internal = 80
     external = 8081
   }
+volumes {
+  host_path      = abspath("${path.module}/files/web")
+  container_path = "/usr/share/nginx/html"
+}
   networks_advanced {
     name = docker_network.app_net.name
   }
@@ -34,6 +42,10 @@ resource "docker_container" "app3" {
     internal = 80
     external = 8082
   }
+volumes {
+  host_path      = abspath("${path.module}/files/web")
+  container_path = "/usr/share/nginx/html"
+}
   networks_advanced {
     name = docker_network.app_net.name
   }
