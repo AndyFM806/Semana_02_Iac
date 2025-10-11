@@ -1,20 +1,15 @@
 resource "docker_image" "grafana" {
-  name         = "grafana/grafana-enterprise:9.4.7"
-  keep_locally = false
+  name = var.grafana_image
 }
 
 resource "docker_container" "grafana" {
-  name  = "grafana-${terraform.workspace}"
-  image = docker_image.grafana.image_id
-
+  name  = "grafana"
+  image = docker_image.grafana.latest
+  ports {
+    internal = 3000
+    external = 3000
+  }
   networks_advanced {
     name = docker_network.monitor_net.name
   }
-
-  ports {
-    internal = 3000
-    external = var.grafana_external_port
-  }
-
-  restart = "always"
 }
